@@ -283,15 +283,16 @@
             <div class="header-left">
                 <div class="header-logo"><span class="dot"></span><span class="ring"></span></div>
                 <div>
-                    <h1>Economia Cultural do Brasil</h1>
-                    <p class="subtitle">Análise do mercado de trabalho cultural · IBGE/PNADC 2014–2024</p>
+                    <h1 data-i18n="title">Economia Cultural do Brasil</h1>
+                    <p class="subtitle" data-i18n="subtitle">Análise do mercado de trabalho cultural · IBGE/PNADC 2014–2024</p>
                 </div>
             </div>
             <div class="header-meta">
-                <div class="meta-item">Pesquisa: <strong>João Roque</strong></div>
+                <div class="meta-item"><span data-i18n="research_label">Pesquisa:</span> <strong>João Roque</strong></div>
                 <div class="meta-item"><a href="https://linkedin.com/in/joaoroquer" target="_blank">linkedin.com/in/joaoroquer</a></div>
-                <div class="meta-item">Fonte: IBGE SIIC 2024</div>
+                <div class="meta-item"><span data-i18n="source_header">Fonte: IBGE SIIC 2024</span></div>
             </div>
+            <button id="lang-toggle" onclick="toggleLang()" style="background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.4);color:white;padding:8px 16px;border-radius:20px;cursor:pointer;font-size:13px;font-weight:700;letter-spacing:0.5px;transition:background 0.2s;white-space:nowrap;flex-shrink:0" onmouseover="this.style.background='rgba(255,255,255,0.28)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">🌐 EN</button>
         </div>
     </header>
 
@@ -300,46 +301,46 @@
         <div class="kpi-row">
             <div class="kpi-card cyan">
                 <div class="kpi-value">5,86M</div>
-                <div class="kpi-label">Trabalhadores culturais 2024</div>
+                <div class="kpi-label" data-i18n="kpi_workers">Trabalhadores culturais 2024</div>
             </div>
             <div class="kpi-card gold">
                 <div class="kpi-value">5,79%</div>
-                <div class="kpi-label">% da força de trabalho</div>
+                <div class="kpi-label" data-i18n="kpi_workforce_pct">% da força de trabalho</div>
             </div>
             <div class="kpi-card orange">
                 <div class="kpi-value">−R$1.338</div>
-                <div class="kpi-label">Gap de renda por gênero</div>
+                <div class="kpi-label" data-i18n="kpi_gender_gap">Gap de renda por gênero</div>
             </div>
             <div class="kpi-card magenta">
                 <div class="kpi-value">−R$1.671</div>
-                <div class="kpi-label">Gap de renda por raça</div>
+                <div class="kpi-label" data-i18n="kpi_race_gap">Gap de renda por raça</div>
             </div>
             <div class="kpi-card green">
                 <div class="kpi-value">55,4%</div>
-                <div class="kpi-label">Formalidade no setor</div>
+                <div class="kpi-label" data-i18n="kpi_formality">Formalidade no setor</div>
             </div>
         </div>
 
         <!-- Tabs -->
         <div class="tabs">
-            <button class="tab-btn active" data-tab="visao-geral">Visão Geral</button>
-            <button class="tab-btn" data-tab="renda-desigualdade">Renda & Desigualdade</button>
-            <button class="tab-btn" data-tab="precarizacao">Precarização</button>
-            <button class="tab-btn" data-tab="perfil">Perfil</button>
-            <button class="tab-btn" data-tab="financiamento-publico">💰 Financiamento</button>
+            <button class="tab-btn active" data-tab="visao-geral" data-i18n="tab_overview">Visão Geral</button>
+            <button class="tab-btn" data-tab="renda-desigualdade" data-i18n="tab_income">Renda & Desigualdade</button>
+            <button class="tab-btn" data-tab="precarizacao" data-i18n="tab_precarity">Precarização</button>
+            <button class="tab-btn" data-tab="perfil" data-i18n="tab_profile">Perfil</button>
+            <button class="tab-btn" data-tab="financiamento-publico" data-i18n="tab_funding">💰 Financiamento</button>
         </div>
 
         <!-- Tab: Visão Geral -->
         <div id="visao-geral" class="tab-content active">
             <div class="charts-grid">
                 <div class="chart-card">
-                    <h3>Trabalhadores no Setor Cultural (milhões)</h3>
+                    <h3 data-i18n="h3_workers">Trabalhadores no Setor Cultural (milhões)</h3>
                     <div class="chart-container">
                         <canvas id="chart1"></canvas>
                     </div>
                 </div>
                 <div class="chart-card">
-                    <h3>Formalidade: Setor Cultural vs. Todos os Setores (%)</h3>
+                    <h3 data-i18n="h3_formality">Formalidade: Setor Cultural vs. Todos os Setores (%)</h3>
                     <div class="chart-container">
                         <canvas id="chart2"></canvas>
                     </div>
@@ -351,13 +352,13 @@
         <div id="renda-desigualdade" class="tab-content">
             <div class="charts-grid">
                 <div class="chart-card">
-                    <h3>Rendimento Médio Real por Gênero (R$)</h3>
+                    <h3 data-i18n="h3_income_gender">Rendimento Médio Real por Gênero (R$)</h3>
                     <div class="chart-container">
                         <canvas id="chart3"></canvas>
                     </div>
                 </div>
                 <div class="chart-card">
-                    <h3>Rendimento Médio por Raça (R$)</h3>
+                    <h3 data-i18n="h3_income_race">Rendimento Médio por Raça (R$)</h3>
                     <div class="chart-container">
                         <canvas id="chart4"></canvas>
                     </div>
@@ -369,7 +370,7 @@
         <div id="precarizacao" class="tab-content">
             <div class="charts-grid">
                 <div class="chart-card">
-                    <h3>Posição na Ocupação: Setor Cultural (%)</h3>
+                    <h3 data-i18n="h3_employment_pos">Posição na Ocupação: Setor Cultural (%)</h3>
                     <div class="chart-container">
                         <canvas id="chart5"></canvas>
                     </div>
@@ -381,13 +382,13 @@
         <div id="perfil" class="tab-content">
             <div class="charts-grid">
                 <div class="chart-card">
-                    <h3>Nível de Instrução: Setor Cultural vs. Todos os Setores (%)</h3>
+                    <h3 data-i18n="h3_education">Nível de Instrução: Setor Cultural vs. Todos os Setores (%)</h3>
                     <div class="chart-container">
                         <canvas id="chart6"></canvas>
                     </div>
                 </div>
                 <div class="chart-card">
-                    <h3>Distribuição Regional (2024)</h3>
+                    <h3 data-i18n="h3_regional">Distribuição Regional (2024)</h3>
                     <div class="chart-container">
                         <canvas id="chart7"></canvas>
                     </div>
@@ -401,74 +402,77 @@
             <div class="kpi-row" style="margin-bottom:20px">
                 <div class="kpi-card cyan">
                     <div class="kpi-value">R$18,9Bi</div>
-                    <div class="kpi-label">Gasto público total em cultura (2023)</div>
+                    <div class="kpi-label" data-i18n="fin_kpi_total">Gasto público total em cultura (2023)</div>
                 </div>
                 <div class="kpi-card orange">
                     <div class="kpi-value">0,38%</div>
-                    <div class="kpi-label">% do gasto público (mínimo recomendado: 1%)</div>
+                    <div class="kpi-label" data-i18n="fin_kpi_pct">% do gasto público (mínimo recomendado: 1%)</div>
                 </div>
                 <div class="kpi-card gold">
                     <div class="kpi-value">65%</div>
-                    <div class="kpi-label">Participação municipal no total (2023)</div>
+                    <div class="kpi-label" data-i18n="fin_kpi_municipal">Participação municipal no total (2023)</div>
                 </div>
                 <div class="kpi-card magenta">
                     <div class="kpi-value">R$4,7Bi</div>
-                    <div class="kpi-label">Gastos tributários federais (5× o gasto direto)</div>
+                    <div class="kpi-label" data-i18n="fin_kpi_tax">Gastos tributários federais (5× o gasto direto)</div>
                 </div>
                 <div class="kpi-card green">
                     <div class="kpi-value">−R$175Mi</div>
-                    <div class="kpi-label">Déficit privado Lei Rouanet (2023)</div>
+                    <div class="kpi-label" data-i18n="fin_kpi_rouanet">Déficit privado Lei Rouanet (2023)</div>
                 </div>
             </div>
             <div class="charts-grid">
                 <div class="chart-card">
-                    <h3>Gasto Público com Cultura por Esfera de Governo — R$ bilhões (2013–2023)</h3>
+                    <h3 data-i18n="h3_spending_sphere">Gasto Público com Cultura por Esfera de Governo — R$ bilhões (2013–2023)</h3>
                     <div class="chart-container" style="height:340px">
                         <canvas id="chart8"></canvas>
                     </div>
                 </div>
                 <div class="chart-card">
-                    <h3>Cultura como % do Gasto Público Total e do PIB (2013–2023)</h3>
+                    <h3 data-i18n="h3_pct_gdp">Cultura como % do Gasto Público Total e do PIB (2013–2023)</h3>
                     <div class="chart-container" style="height:340px">
                         <canvas id="chart9"></canvas>
                     </div>
                 </div>
                 <div class="chart-card">
-                    <h3>Despesa com Cultura per capita por Região — 2023 (R$)</h3>
+                    <h3 data-i18n="h3_per_capita">Despesa com Cultura per capita por Região — 2023 (R$)</h3>
                     <div class="chart-container" style="height:340px">
                         <canvas id="chart10"></canvas>
                     </div>
                 </div>
                 <div class="chart-card">
-                    <h3>Composição por Subfunção — % do gasto cultural total (2013–2023)</h3>
+                    <h3 data-i18n="h3_subfunctions">Composição por Subfunção — % do gasto cultural total (2013–2023)</h3>
                     <div class="chart-container" style="height:340px">
                         <canvas id="chart11"></canvas>
                     </div>
                 </div>
                 <div class="chart-card">
-                    <h3>Lei Rouanet: Captação vs. Renúncia Fiscal — R$ milhões (2013–2023)</h3>
+                    <h3 data-i18n="h3_rouanet">Lei Rouanet: Captação vs. Renúncia Fiscal — R$ milhões (2013–2023)</h3>
                     <div class="chart-container" style="height:340px">
                         <canvas id="chart12"></canvas>
                     </div>
                 </div>
                 <div class="chart-card">
-                    <h3>Gastos Tributários Federais com Cultura por Modalidade — R$ bilhões (2013–2023)</h3>
+                    <h3 data-i18n="h3_tax_exp">Gastos Tributários Federais com Cultura por Modalidade — R$ bilhões (2013–2023)</h3>
                     <div class="chart-container" style="height:340px">
                         <canvas id="chart13"></canvas>
                     </div>
                 </div>
             </div>
             <p style="color:rgba(232,244,255,0.45);font-size:11px;margin-top:10px;padding:0 4px">
-                Fontes: SIAFI/STN (gastos diretos), SALICNET/MinC (Lei Rouanet), Receita Federal do Brasil (gastos tributários). Valores nominais correntes.
+                <span data-i18n="fin_footnote">Fontes: SIAFI/STN (gastos diretos), SALICNET/MinC (Lei Rouanet), Receita Federal do Brasil (gastos tributários). Valores nominais correntes.</span>
             </p>
         </div>
     </div>
 
     <footer class="dashboard-footer">
-        Fonte: IBGE/PNADC SIIC 2013–2024 | Pesquisa: João Roque | <a href="https://linkedin.com/in/joaoroquer">linkedin.com/in/joaoroquer</a>
+        <span data-i18n="footer_text">Fonte: IBGE/PNADC SIIC 2013–2024 | Pesquisa: João Roque</span> | <a href="https://linkedin.com/in/joaoroquer">linkedin.com/in/joaoroquer</a>
     </footer>
 
     <script>
+        // Hoisted: chart registry must be available before any Chart() call
+        const chartInstances = {};
+
         // Chart.js global defaults
         Chart.defaults.color = 'rgba(232, 244, 255, 0.7)';
         Chart.defaults.borderColor = 'rgba(255, 255, 255, 0.08)';
@@ -516,7 +520,7 @@
 
         // Chart 1: Trabalhadores no Setor Cultural
         const ctx1 = document.getElementById('chart1').getContext('2d');
-        new Chart(ctx1, {
+        chartInstances.chart1 = new Chart(ctx1, {
             type: 'line',
             data: {
                 labels: ['2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024'],
@@ -547,7 +551,7 @@
 
         // Chart 2: Formalidade
         const ctx2 = document.getElementById('chart2').getContext('2d');
-        new Chart(ctx2, {
+        chartInstances.chart2 = new Chart(ctx2, {
             type: 'line',
             data: {
                 labels: ['2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024'],
@@ -590,7 +594,7 @@
 
         // Chart 3: Rendimento por Gênero
         const ctx3 = document.getElementById('chart3').getContext('2d');
-        new Chart(ctx3, {
+        chartInstances.chart3 = new Chart(ctx3, {
             type: 'line',
             data: {
                 labels: ['2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024'],
@@ -634,7 +638,7 @@
 
         // Chart 4: Rendimento por Raça
         const ctx4 = document.getElementById('chart4').getContext('2d');
-        new Chart(ctx4, {
+        chartInstances.chart4 = new Chart(ctx4, {
             type: 'line',
             data: {
                 labels: ['2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024'],
@@ -678,7 +682,7 @@
 
         // Chart 5: Posição na Ocupação
         const ctx5 = document.getElementById('chart5').getContext('2d');
-        new Chart(ctx5, {
+        chartInstances.chart5 = new Chart(ctx5, {
             type: 'line',
             data: {
                 labels: ['2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024'],
@@ -720,7 +724,7 @@
 
         // Chart 6: Nível de Instrução
         const ctx6 = document.getElementById('chart6').getContext('2d');
-        new Chart(ctx6, {
+        chartInstances.chart6 = new Chart(ctx6, {
             type: 'bar',
             data: {
                 labels: ['Sem instrução', 'Fundamental completo', 'Médio completo', 'Superior completo'],
@@ -756,7 +760,7 @@
 
         // Chart 7: Distribuição Regional
         const ctx7 = document.getElementById('chart7').getContext('2d');
-        new Chart(ctx7, {
+        chartInstances.chart7 = new Chart(ctx7, {
             type: 'doughnut',
             data: {
                 labels: ['Sudeste', 'Nordeste', 'Sul', 'Centro-Oeste', 'Norte'],
@@ -786,7 +790,7 @@
 
         // Chart 8: Gastos por esfera (stacked bar)
         const ctx8 = document.getElementById('chart8').getContext('2d');
-        new Chart(ctx8, {
+        chartInstances.chart8 = new Chart(ctx8, {
             type: 'bar',
             data: {
                 labels: anos,
@@ -829,7 +833,7 @@
 
         // Chart 9: % Gasto Público e % PIB (dual y-axis)
         const ctx9 = document.getElementById('chart9').getContext('2d');
-        new Chart(ctx9, {
+        chartInstances.chart9 = new Chart(ctx9, {
             type: 'line',
             data: {
                 labels: anos,
@@ -883,7 +887,7 @@
 
         // Chart 10: Per capita 2023 (horizontal bar)
         const ctx10 = document.getElementById('chart10').getContext('2d');
-        new Chart(ctx10, {
+        chartInstances.chart10 = new Chart(ctx10, {
             type: 'bar',
             data: {
                 labels: ['Sul', 'Nordeste', 'Norte', 'Brasil', 'Sudeste', 'Centro-Oeste'],
@@ -924,7 +928,7 @@
 
         // Chart 11: Subfunções (stacked bar %)
         const ctx11 = document.getElementById('chart11').getContext('2d');
-        new Chart(ctx11, {
+        chartInstances.chart11 = new Chart(ctx11, {
             type: 'bar',
             data: {
                 labels: anos,
@@ -965,7 +969,7 @@
 
         // Chart 12: Lei Rouanet
         const ctx12 = document.getElementById('chart12').getContext('2d');
-        new Chart(ctx12, {
+        chartInstances.chart12 = new Chart(ctx12, {
             type: 'line',
             data: {
                 labels: anos,
@@ -1007,7 +1011,7 @@
 
         // Chart 13: Gastos tributários por modalidade (stacked bar)
         const ctx13 = document.getElementById('chart13').getContext('2d');
-        new Chart(ctx13, {
+        chartInstances.chart13 = new Chart(ctx13, {
             type: 'bar',
             data: {
                 labels: anos,
@@ -1050,6 +1054,164 @@
                 }
             }
         });
+
+
+        // ── i18n Translation Engine ──────────────────────────────────────────────
+        let currentLang = 'pt';
+        const translations = {
+            pt: {
+                title: 'Economia Cultural do Brasil',
+                subtitle: 'Análise do mercado de trabalho cultural · IBGE/PNADC 2014–2024',
+                research_label: 'Pesquisa:',
+                source_header: 'Fonte: IBGE SIIC 2024',
+                kpi_workers: 'Trabalhadores culturais 2024',
+                kpi_workforce_pct: '% da força de trabalho',
+                kpi_gender_gap: 'Gap de renda por gênero',
+                kpi_race_gap: 'Gap de renda por raça',
+                kpi_formality: 'Formalidade no setor',
+                tab_overview: 'Visão Geral',
+                tab_income: 'Renda & Desigualdade',
+                tab_precarity: 'Precarização',
+                tab_profile: 'Perfil',
+                tab_funding: '💰 Financiamento',
+                h3_workers: 'Trabalhadores no Setor Cultural (milhões)',
+                h3_formality: 'Formalidade: Setor Cultural vs. Todos os Setores (%)',
+                h3_income_gender: 'Rendimento Médio Real por Gênero (R$)',
+                h3_income_race: 'Rendimento Médio por Raça (R$)',
+                h3_employment_pos: 'Posição na Ocupação: Setor Cultural (%)',
+                h3_education: 'Nível de Instrução: Setor Cultural vs. Todos os Setores (%)',
+                h3_regional: 'Distribuição Regional (2024)',
+                h3_spending_sphere: 'Gasto Público com Cultura por Esfera de Governo — R$ bilhões (2013–2023)',
+                h3_pct_gdp: 'Cultura como % do Gasto Público Total e do PIB (2013–2023)',
+                h3_per_capita: 'Despesa com Cultura per capita por Região — 2023 (R$)',
+                h3_subfunctions: 'Composição por Subfunção — % do gasto cultural total (2013–2023)',
+                h3_rouanet: 'Lei Rouanet: Captação vs. Renúncia Fiscal — R$ milhões (2013–2023)',
+                h3_tax_exp: 'Gastos Tributários Federais com Cultura por Modalidade — R$ bilhões (2013–2023)',
+                fin_kpi_total: 'Gasto público total em cultura (2023)',
+                fin_kpi_pct: '% do gasto público (mínimo recomendado: 1%)',
+                fin_kpi_municipal: 'Participação municipal no total (2023)',
+                fin_kpi_tax: 'Gastos tributários federais (5× o gasto direto)',
+                fin_kpi_rouanet: 'Déficit privado Lei Rouanet (2023)',
+                fin_footnote: 'Fontes: SIAFI/STN (gastos diretos), SALICNET/MinC (Lei Rouanet), Receita Federal do Brasil (gastos tributários). Valores nominais correntes.',
+                footer_text: 'Fonte: IBGE/PNADC SIIC 2013–2024 | Pesquisa: João Roque',
+                ds_workers: 'Trabalhadores (milhões)',
+                ds_all_sectors: 'Todos os Setores',
+                ds_cultural_sector: 'Setor Cultural',
+                ds_men: 'Homens',
+                ds_women: 'Mulheres',
+                ds_white: 'Branca',
+                ds_black_brown: 'Preta/Parda',
+                ds_self_employed: 'Conta Própria',
+                ds_formal_employee: 'Empregado c/ Carteira',
+                ds_edu_labels: ['Sem instrução','Fundamental completo','Médio completo','Superior completo'],
+                ds_regional_labels: ['Sudeste','Nordeste','Sul','Centro-Oeste','Norte'],
+                ds_percapita_labels: ['Sul','Nordeste','Norte','Brasil','Sudeste','Centro-Oeste'],
+                ds_federal: 'Federal', ds_estadual: 'Estadual', ds_municipal: 'Municipal',
+                ds_pct_gasto: '% do Gasto Público Total', ds_pct_pib: '% PIB',
+                ds_difusao: 'Difusão Cultural', ds_demais: 'Demais Subfunções', ds_patrimonio: 'Patrimônio Histórico',
+                ds_captacao: 'Valor Captado', ds_renuncia: 'Renúncia Fiscal',
+                ds_pronac: 'Lei Rouanet (PRONAC)', ds_livros: 'Isenção Livros',
+                ds_audiovisual: 'Atividade Audiovisual', ds_outros_trib: 'Demais',
+            },
+            en: {
+                title: "Brazil's Cultural Economy",
+                subtitle: 'Analysis of the cultural labor market · IBGE/PNADC 2014–2024',
+                research_label: 'Research:',
+                source_header: 'Source: IBGE SIIC 2024',
+                kpi_workers: 'Cultural workers 2024',
+                kpi_workforce_pct: '% of labor force',
+                kpi_gender_gap: 'Gender income gap',
+                kpi_race_gap: 'Racial income gap',
+                kpi_formality: 'Formality rate in sector',
+                tab_overview: 'Overview',
+                tab_income: 'Income & Inequality',
+                tab_precarity: 'Precarious Work',
+                tab_profile: 'Profile',
+                tab_funding: '💰 Public Funding',
+                h3_workers: 'Workers in the Cultural Sector (millions)',
+                h3_formality: 'Formality Rate: Cultural Sector vs. All Sectors (%)',
+                h3_income_gender: 'Average Real Income by Gender (R$)',
+                h3_income_race: 'Average Income by Race (R$)',
+                h3_employment_pos: 'Employment Position: Cultural Sector (%)',
+                h3_education: 'Education Level: Cultural Sector vs. All Sectors (%)',
+                h3_regional: 'Regional Distribution (2024)',
+                h3_spending_sphere: 'Public Cultural Spending by Government Level — R$ billions (2013–2023)',
+                h3_pct_gdp: 'Culture as % of Total Public Spending and GDP (2013–2023)',
+                h3_per_capita: 'Per Capita Cultural Spending by Region — 2023 (R$)',
+                h3_subfunctions: 'Composition by Subfunction — % of total cultural spending (2013–2023)',
+                h3_rouanet: 'Rouanet Law: Fundraising vs. Tax Waiver — R$ millions (2013–2023)',
+                h3_tax_exp: 'Federal Tax Expenditures on Culture by Category — R$ billions (2013–2023)',
+                fin_kpi_total: 'Total public spending on culture (2023)',
+                fin_kpi_pct: '% of public spending (UNESCO benchmark: 1%)',
+                fin_kpi_municipal: 'Municipal share of total (2023)',
+                fin_kpi_tax: 'Federal tax expenditures (5× direct spending)',
+                fin_kpi_rouanet: 'Rouanet Law private investment deficit (2023)',
+                fin_footnote: 'Sources: SIAFI/STN (direct expenditures), SALICNET/MinC (Rouanet Law), Brazilian Federal Revenue (tax expenditures). Nominal current values.',
+                footer_text: 'Source: IBGE/PNADC SIIC 2013–2024 | Research: João Roque',
+                ds_workers: 'Workers (millions)',
+                ds_all_sectors: 'All Sectors',
+                ds_cultural_sector: 'Cultural Sector',
+                ds_men: 'Men',
+                ds_women: 'Women',
+                ds_white: 'White',
+                ds_black_brown: 'Black/Brown',
+                ds_self_employed: 'Self-Employed',
+                ds_formal_employee: 'Formal Employee',
+                ds_edu_labels: ['No schooling','Primary education','Secondary education','Higher education'],
+                ds_regional_labels: ['Southeast','Northeast','South','Midwest','North'],
+                ds_percapita_labels: ['South','Northeast','North','Brazil','Southeast','Midwest'],
+                ds_federal: 'Federal', ds_estadual: 'State', ds_municipal: 'Municipal',
+                ds_pct_gasto: '% of Total Public Spending', ds_pct_pib: '% GDP',
+                ds_difusao: 'Cultural Diffusion', ds_demais: 'Other Subfunctions', ds_patrimonio: 'Historic Heritage',
+                ds_captacao: 'Funds Raised', ds_renuncia: 'Tax Waiver',
+                ds_pronac: 'Rouanet Law (PRONAC)', ds_livros: 'Books Tax Exemption',
+                ds_audiovisual: 'Audiovisual Activity', ds_outros_trib: 'Others',
+            }
+        };
+
+        function toggleLang() {
+            currentLang = currentLang === 'pt' ? 'en' : 'pt';
+            applyLang(currentLang);
+            const btn = document.getElementById('lang-toggle');
+            btn.textContent = currentLang === 'pt' ? '🌐 EN' : '🌐 PT';
+            document.documentElement.lang = currentLang;
+        }
+
+        function applyLang(lang) {
+            const t = translations[lang];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key] !== undefined) el.textContent = t[key];
+            });
+            updateChartLabels(lang);
+        }
+
+        function setDatasets(chart, labelArr) {
+            if (!chart) return;
+            labelArr.forEach((lbl, i) => {
+                if (chart.data.datasets[i] !== undefined) chart.data.datasets[i].label = lbl;
+            });
+            chart.update('none');
+        }
+
+        function updateChartLabels(lang) {
+            const t = translations[lang];
+            const ci = chartInstances;
+            if (!ci.chart1) return;  // not ready yet
+            setDatasets(ci.chart1, [t.ds_workers]);
+            setDatasets(ci.chart2, [t.ds_all_sectors, t.ds_cultural_sector]);
+            setDatasets(ci.chart3, [t.ds_men, t.ds_women]);
+            setDatasets(ci.chart4, [t.ds_white, t.ds_black_brown]);
+            setDatasets(ci.chart5, [t.ds_self_employed, t.ds_formal_employee]);
+            if (ci.chart6) { ci.chart6.data.labels = t.ds_edu_labels; setDatasets(ci.chart6, [t.ds_all_sectors, t.ds_cultural_sector]); }
+            if (ci.chart7) { ci.chart7.data.labels = t.ds_regional_labels; ci.chart7.update('none'); }
+            setDatasets(ci.chart8, [t.ds_federal, t.ds_estadual, t.ds_municipal]);
+            setDatasets(ci.chart9, [t.ds_pct_gasto, t.ds_pct_pib]);
+            if (ci.chart10) { ci.chart10.data.labels = t.ds_percapita_labels; ci.chart10.update('none'); }
+            setDatasets(ci.chart11, [t.ds_difusao, t.ds_demais, t.ds_patrimonio]);
+            setDatasets(ci.chart12, [t.ds_captacao, t.ds_renuncia]);
+            setDatasets(ci.chart13, [t.ds_pronac, t.ds_livros, t.ds_audiovisual, t.ds_outros_trib]);
+        }
 
         // Tab switching
         document.querySelectorAll('.tab-btn').forEach(btn => {
