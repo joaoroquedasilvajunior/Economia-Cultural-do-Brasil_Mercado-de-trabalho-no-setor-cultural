@@ -326,6 +326,7 @@
             <button class="tab-btn" data-tab="renda-desigualdade">Renda & Desigualdade</button>
             <button class="tab-btn" data-tab="precarizacao">Precarização</button>
             <button class="tab-btn" data-tab="perfil">Perfil</button>
+            <button class="tab-btn" data-tab="financiamento-publico">💰 Financiamento</button>
         </div>
 
         <!-- Tab: Visão Geral -->
@@ -392,6 +393,74 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Tab: Financiamento Público -->
+        <div id="financiamento-publico" class="tab-content">
+            <!-- KPI mini-cards for financiamento -->
+            <div class="kpi-row" style="margin-bottom:20px">
+                <div class="kpi-card cyan">
+                    <div class="kpi-value">R$18,9Bi</div>
+                    <div class="kpi-label">Gasto público total em cultura (2023)</div>
+                </div>
+                <div class="kpi-card orange">
+                    <div class="kpi-value">0,38%</div>
+                    <div class="kpi-label">% do gasto público (mínimo recomendado: 1%)</div>
+                </div>
+                <div class="kpi-card gold">
+                    <div class="kpi-value">65%</div>
+                    <div class="kpi-label">Participação municipal no total (2023)</div>
+                </div>
+                <div class="kpi-card magenta">
+                    <div class="kpi-value">R$4,7Bi</div>
+                    <div class="kpi-label">Gastos tributários federais (5× o gasto direto)</div>
+                </div>
+                <div class="kpi-card green">
+                    <div class="kpi-value">−R$175Mi</div>
+                    <div class="kpi-label">Déficit privado Lei Rouanet (2023)</div>
+                </div>
+            </div>
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>Gasto Público com Cultura por Esfera de Governo — R$ bilhões (2013–2023)</h3>
+                    <div class="chart-container" style="height:340px">
+                        <canvas id="chart8"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>Cultura como % do Gasto Público Total e do PIB (2013–2023)</h3>
+                    <div class="chart-container" style="height:340px">
+                        <canvas id="chart9"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>Despesa com Cultura per capita por Região — 2023 (R$)</h3>
+                    <div class="chart-container" style="height:340px">
+                        <canvas id="chart10"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>Composição por Subfunção — % do gasto cultural total (2013–2023)</h3>
+                    <div class="chart-container" style="height:340px">
+                        <canvas id="chart11"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>Lei Rouanet: Captação vs. Renúncia Fiscal — R$ milhões (2013–2023)</h3>
+                    <div class="chart-container" style="height:340px">
+                        <canvas id="chart12"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>Gastos Tributários Federais com Cultura por Modalidade — R$ bilhões (2013–2023)</h3>
+                    <div class="chart-container" style="height:340px">
+                        <canvas id="chart13"></canvas>
+                    </div>
+                </div>
+            </div>
+            <p style="color:rgba(232,244,255,0.45);font-size:11px;margin-top:10px;padding:0 4px">
+                Fontes: SIAFI/STN (gastos diretos), SALICNET/MinC (Lei Rouanet), Receita Federal do Brasil (gastos tributários). Valores nominais correntes.
+            </p>
         </div>
     </div>
 
@@ -705,6 +774,278 @@
                     legend: {
                         ...chartOptions.plugins.legend,
                         position: 'bottom'
+                    }
+                }
+            }
+        });
+
+
+        // ── FINANCIAMENTO PÚBLICO ──────────────────────────────────────────
+
+        const anos = ['2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023'];
+
+        // Chart 8: Gastos por esfera (stacked bar)
+        const ctx8 = document.getElementById('chart8').getContext('2d');
+        new Chart(ctx8, {
+            type: 'bar',
+            data: {
+                labels: anos,
+                datasets: [
+                    {
+                        label: 'Federal',
+                        data: [0.92, 1.05, 1.11, 1.00, 0.94, 1.02, 0.80, 0.83, 0.67, 0.29, 0.86],
+                        backgroundColor: '#27187e',
+                        stack: 'esfera'
+                    },
+                    {
+                        label: 'Estadual',
+                        data: [3.12, 3.21, 2.77, 2.48, 2.62, 2.76, 2.64, 3.96, 3.57, 5.13, 5.75],
+                        backgroundColor: '#4a35b0',
+                        stack: 'esfera'
+                    },
+                    {
+                        label: 'Municipal',
+                        data: [4.46, 5.52, 5.14, 4.80, 4.66, 5.15, 5.57, 5.08, 5.55, 8.36, 12.29],
+                        backgroundColor: '#ff8600',
+                        stack: 'esfera'
+                    }
+                ]
+            },
+            options: {
+                ...chartOptions,
+                scales: {
+                    x: { ...chartOptions.scales.x, stacked: true },
+                    y: {
+                        ...chartOptions.scales.y,
+                        stacked: true,
+                        ticks: {
+                            ...chartOptions.scales.y.ticks,
+                            callback: v => 'R$' + v.toFixed(0) + 'Bi'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 9: % Gasto Público e % PIB (dual y-axis)
+        const ctx9 = document.getElementById('chart9').getContext('2d');
+        new Chart(ctx9, {
+            type: 'line',
+            data: {
+                labels: anos,
+                datasets: [
+                    {
+                        label: '% Gasto Público Total',
+                        data: [0.401, 0.408, 0.326, 0.290, 0.282, 0.289, 0.283, 0.281, 0.269, 0.315, 0.381],
+                        borderColor: '#27187e',
+                        backgroundColor: 'rgba(39,24,126,0.15)',
+                        borderWidth: 2.5,
+                        pointRadius: 4,
+                        fill: true,
+                        tension: 0.3,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: '% PIB',
+                        data: [0.159, 0.169, 0.151, 0.132, 0.125, 0.128, 0.122, 0.130, 0.109, 0.137, 0.173],
+                        borderColor: '#ff8600',
+                        backgroundColor: 'rgba(255,134,0,0.12)',
+                        borderWidth: 2.5,
+                        pointRadius: 4,
+                        fill: true,
+                        tension: 0.3,
+                        borderDash: [5,4],
+                        yAxisID: 'y2'
+                    }
+                ]
+            },
+            options: {
+                ...chartOptions,
+                scales: {
+                    x: chartOptions.scales.x,
+                    y: {
+                        ...chartOptions.scales.y,
+                        position: 'left',
+                        ticks: { ...chartOptions.scales.y.ticks, callback: v => v.toFixed(2) + '%' },
+                        title: { display: true, text: '% Gasto Público', color: '#27187e', font: { size: 10 } }
+                    },
+                    y2: {
+                        type: 'linear',
+                        position: 'right',
+                        beginAtZero: false,
+                        grid: { drawOnChartArea: false },
+                        ticks: { color: '#ff8600', font: { size: 10 }, callback: v => v.toFixed(3) + '%' },
+                        title: { display: true, text: '% PIB', color: '#ff8600', font: { size: 10 } }
+                    }
+                }
+            }
+        });
+
+        // Chart 10: Per capita 2023 (horizontal bar)
+        const ctx10 = document.getElementById('chart10').getContext('2d');
+        new Chart(ctx10, {
+            type: 'bar',
+            data: {
+                labels: ['Sul', 'Nordeste', 'Norte', 'Brasil', 'Sudeste', 'Centro-Oeste'],
+                datasets: [{
+                    label: 'R$ per capita (2023)',
+                    data: [44.68, 67.38, 80.63, 88.88, 113.17, 124.27],
+                    backgroundColor: [
+                        '#93c5fd','#93c5fd','#93c5fd',
+                        '#1a1a2e',
+                        '#ff8600','#ff8600'
+                    ],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                ...chartOptions,
+                indexAxis: 'y',
+                scales: {
+                    y: {
+                        ...chartOptions.scales.y,
+                        beginAtZero: false,
+                        ticks: { color: 'rgba(232,244,255,0.7)', font: { size: 11 } }
+                    },
+                    x: {
+                        ...chartOptions.scales.x,
+                        ticks: {
+                            ...chartOptions.scales.x.ticks,
+                            callback: v => 'R$' + v.toFixed(0)
+                        }
+                    }
+                },
+                plugins: {
+                    ...chartOptions.plugins,
+                    annotation: undefined
+                }
+            }
+        });
+
+        // Chart 11: Subfunções (stacked bar %)
+        const ctx11 = document.getElementById('chart11').getContext('2d');
+        new Chart(ctx11, {
+            type: 'bar',
+            data: {
+                labels: anos,
+                datasets: [
+                    {
+                        label: 'Difusão Cultural',
+                        data: [59.4, 61.6, 58.3, 53.6, 56.6, 57.4, 62.8, 64.4, 60.3, 68.6, 71.0],
+                        backgroundColor: '#27187e',
+                        stack: 'subfunc'
+                    },
+                    {
+                        label: 'Demais Subfunções',
+                        data: [33.3, 31.4, 35.0, 39.5, 37.8, 36.0, 30.4, 29.3, 30.7, 24.7, 24.3],
+                        backgroundColor: '#4a35b0',
+                        stack: 'subfunc'
+                    },
+                    {
+                        label: 'Patrimônio Histórico',
+                        data: [7.4, 7.0, 6.7, 6.9, 5.5, 6.6, 6.8, 6.3, 9.0, 6.7, 4.7],
+                        backgroundColor: '#ff8600',
+                        stack: 'subfunc'
+                    }
+                ]
+            },
+            options: {
+                ...chartOptions,
+                scales: {
+                    x: { ...chartOptions.scales.x, stacked: true },
+                    y: {
+                        ...chartOptions.scales.y,
+                        stacked: true,
+                        max: 100,
+                        ticks: { ...chartOptions.scales.y.ticks, callback: v => v + '%' }
+                    }
+                }
+            }
+        });
+
+        // Chart 12: Lei Rouanet
+        const ctx12 = document.getElementById('chart12').getContext('2d');
+        new Chart(ctx12, {
+            type: 'line',
+            data: {
+                labels: anos,
+                datasets: [
+                    {
+                        label: 'Valor Captado',
+                        data: [1262, 1336, 1203, 1149, 1189, 1297, 1481, 1505, 2124, 2115, 2315],
+                        borderColor: '#0d9488',
+                        backgroundColor: 'rgba(13,148,136,0.12)',
+                        borderWidth: 2.5,
+                        pointRadius: 4,
+                        fill: true,
+                        tension: 0.3
+                    },
+                    {
+                        label: 'Renúncia Fiscal',
+                        data: [1079, 1156, 1237, 1110, 1148, 1203, 1483, 1521, 2208, 2257, 2490],
+                        borderColor: '#ff8600',
+                        backgroundColor: 'rgba(255,134,0,0.1)',
+                        borderWidth: 2.5,
+                        borderDash: [5, 4],
+                        pointRadius: 4,
+                        fill: true,
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                ...chartOptions,
+                scales: {
+                    ...chartOptions.scales,
+                    y: {
+                        ...chartOptions.scales.y,
+                        ticks: { ...chartOptions.scales.y.ticks, callback: v => 'R$' + v.toLocaleString('pt-BR') + 'Mi' }
+                    }
+                }
+            }
+        });
+
+        // Chart 13: Gastos tributários por modalidade (stacked bar)
+        const ctx13 = document.getElementById('chart13').getContext('2d');
+        new Chart(ctx13, {
+            type: 'bar',
+            data: {
+                labels: anos,
+                datasets: [
+                    {
+                        label: 'Lei Rouanet (PRONAC)',
+                        data: [1.079, 1.156, 1.237, 1.110, 1.148, 1.203, 1.483, 1.521, 2.208, 2.257, 2.490],
+                        backgroundColor: '#27187e',
+                        stack: 'trib'
+                    },
+                    {
+                        label: 'Isenção Livros',
+                        data: [0.250, 0.267, 0.640, 0.880, 1.119, 1.007, 0.995, 1.138, 1.467, 1.651, 1.777],
+                        backgroundColor: '#ff8600',
+                        stack: 'trib'
+                    },
+                    {
+                        label: 'Atividade Audiovisual',
+                        data: [0.141, 0.211, 0.265, 0.253, 0.282, 0.292, 0.273, 0.173, 0.238, 0.245, 0.250],
+                        backgroundColor: '#0d9488',
+                        stack: 'trib'
+                    },
+                    {
+                        label: 'Demais',
+                        data: [0.210, 0.231, 0.229, 0.355, 0.286, 0.322, 0.315, 0.103, 0.131, 0.148, 0.156],
+                        backgroundColor: '#ca8a04',
+                        stack: 'trib'
+                    }
+                ]
+            },
+            options: {
+                ...chartOptions,
+                scales: {
+                    x: { ...chartOptions.scales.x, stacked: true },
+                    y: {
+                        ...chartOptions.scales.y,
+                        stacked: true,
+                        ticks: { ...chartOptions.scales.y.ticks, callback: v => 'R$' + v.toFixed(1) + 'Bi' }
                     }
                 }
             }
